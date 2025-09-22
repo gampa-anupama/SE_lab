@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html>
 <head>
     <title>Exam Registration - EduAssessPro</title>
@@ -58,7 +57,7 @@
 <body>
     <div class="form-container">
         <h1>Exam Registration</h1>
-        <form action="RegistrationServlet" method="post">
+        <form action="registration.jsp" method="post">
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullname" required>
 
@@ -79,6 +78,22 @@
 
             <button type="submit">Register Now</button>
         </form>
-    </div>
+        </div>
+         <%-- Simple JSP to display submitted values --%>
+    <%
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        
+        if (name != null && email != null) {
+    %>
+        <h3>Registration Successful!</h3>
+        <p><b>Name:</b> <%= name %></p>
+        <p><b>Email:</b> <%= email %></p>
+        
+    <%
+        }
+    %>
+        
+    
 </body>
 </html>
