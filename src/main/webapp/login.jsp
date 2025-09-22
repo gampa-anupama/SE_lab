@@ -52,7 +52,7 @@
             display: block;
             margin-top: 15px;
             text-decoration: none;
-            color: #2980b9;
+            color: green;
             font-size: 14px;
         }
     </style>
