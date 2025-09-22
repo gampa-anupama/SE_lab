@@ -1,1 +1,32 @@
 
+version: '3.8'
+services:
+  tomcat:
+    image: tomcat:9.0-jdk11
+    container_name: tomcat_server
+    ports:
+      - "8083:8080"
+    volumes:
+      - ./target/EduAssessPro.war:/usr/local/tomcat/webapps/ROOT.war
+    
+   
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: eduassessprodb
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8080:80"
